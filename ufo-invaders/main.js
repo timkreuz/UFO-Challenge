@@ -2,7 +2,7 @@ import {getGame} from './controllers/game.js';
 import {drawGame} from './controllers/draw.js';
 import {updateGame} from './controllers/update.js';
 
-var game = getGame(document);
+var game = getGame();
 
 function runGame() {
     if (game.gameOver) {
