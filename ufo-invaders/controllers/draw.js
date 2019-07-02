@@ -1,5 +1,4 @@
 export function drawGame(game) {
-
     displayScore(game);
     drawObjects(game);
 }
