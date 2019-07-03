@@ -1,7 +1,7 @@
-import {getEarth} from '../objects/earth.js';
-import {getSky} from '../objects/sky.js'; 
-import {getUFO} from '../objects/ufo.js'; 
-import {getStats} from '../objects/stats.js'; 
+import { getEarth } from '../objects/earth.js';
+import { getSky } from '../objects/sky.js';
+import { getUFO } from '../objects/ufo.js';
+import { getStats } from '../objects/stats.js';
 
 export function getGame() {
     var stats = getStats();
@@ -11,12 +11,22 @@ export function getGame() {
     var infoCtx = infoCenter.getContext("2d");
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
-    var ufo = getUFO(canvas);
+    var ufos = getUFOs(canvas);
 
-    var game = {gameOver: false,
-                infoCenter: infoCenter, infoCtx: infoCtx,
-                canvas: canvas, ctx: ctx,
-                stats: stats,
-                earth: earth, sky: sky, ufo: ufo};
+    var game = {
+        gameOver: false,
+        infoCenter: infoCenter, infoCtx: infoCtx,
+        canvas: canvas, ctx: ctx,
+        stats: stats,
+        earth: earth, sky: sky, ufos: ufos
+    };
     return game;
+}
+
+function getUFOs(canvas) {
+    var ufos = [];
+    for (var i = 0; i < 5; i++) {
+        ufos.push(getUFO(canvas));
+    }
+    return ufos;
 }

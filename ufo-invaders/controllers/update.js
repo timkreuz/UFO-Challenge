@@ -1,5 +1,7 @@
 import {updateUFO} from '../objects/ufo.js'; 
 
 export function updateGame(game) {
-    updateUFO(game.ufo);
+    for (var i = 0; i < game.ufos.length; i++) {
+        updateUFO(game.ufos[i]);
+    }
 }
