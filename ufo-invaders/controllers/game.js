@@ -25,7 +25,7 @@ export function getGame() {
 
 function getUFOs(canvas) {
     var ufos = [];
-    for (var i = 0; i < 99; i++) {
+    for (var i = 0; i < 5; i++) {
         ufos.push(getUFO(canvas));
     }
     return ufos;
