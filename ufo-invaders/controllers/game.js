@@ -12,13 +12,14 @@ export function getGame() {
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
     var ufos = getUFOs(canvas);
+    var beams = getBeams(ufos);
 
     var game = {
         gameOver: false,
         infoCenter: infoCenter, infoCtx: infoCtx,
         canvas: canvas, ctx: ctx,
         stats: stats,
-        earth: earth, sky: sky, ufos: ufos
+        earth: earth, sky: sky, ufos: ufos, beams: beams
     };
     return game;
 }
@@ -29,4 +30,12 @@ function getUFOs(canvas) {
         ufos.push(getUFO(canvas));
     }
     return ufos;
+}
+
+function getBeams(ufos) {
+    var beams = [];
+    for (var i = 0; i < ufos.length; i++) {
+        beams.push(ufos[i].beam);
+    }
+    return beams;
 }
