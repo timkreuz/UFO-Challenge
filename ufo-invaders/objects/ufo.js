@@ -10,11 +10,10 @@ export function getUFO(canvas) {
         timer: Date.now() + 3000,
         display: true,
         mode: "flying",
-        beam: null,
+        beam: getBeam(canvas),
         parts: []
     };
     ufo.parts = getParts(ufo);
-    ufo.beam = getBeam(canvas, ufo);
     return ufo;
 }
 
@@ -72,7 +71,7 @@ export function updateUFO(ufo) {
         }
 
         ufo.y = ufo.y + ufo.speedY;
-        if ((ufo.y < ufo.maxUp) || (ufo.y + ufo.height > ufo.maxDown)) {
+        if ((ufo.y <= ufo.maxUp) || (ufo.y + ufo.height >= ufo.maxDown)) {
             ufo.speedY = ufo.speedY * -1;
         }
 

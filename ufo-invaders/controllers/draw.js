@@ -15,7 +15,6 @@ function drawObjects(game) {
     drawObject(game.ctx, game.earth);
     drawObject(game.ctx, game.sky);
     drawComplex(game.ctx, game.ufos);
-    // console.log(game.beams);
     drawComplex(game.ctx, game.beams);
 }
 

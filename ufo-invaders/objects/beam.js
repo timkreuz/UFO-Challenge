@@ -1,5 +1,6 @@
 import { EARTH_HEIGHT } from './earth.js';
-export function getBeam(canvas, ufo) {
+
+export function getBeam(canvas) {
 
     var beam = {
         type: "complex",
@@ -8,7 +9,6 @@ export function getBeam(canvas, ufo) {
         display: false,
         parts: []
     };
-    beam.parts = getParts(beam, ufo);
     return beam;
 }
 
@@ -17,18 +17,16 @@ function getParts(beam, ufo) {
     var b = {
         type: "rectangle",
         x: beam.x, y: beam.y, width: beam.width, height: beam.height,
-        color: '#ff00ff', display: true
+        color: '#ff0000', display: true
     };
 
     var millisecondsRemaining = ufo.timer - Date.now();
     var percentRemaining = millisecondsRemaining / 3000;
     var abducteeY = beam.y + (beam.height * percentRemaining);
-    console.log(beam.y);
-    console.log(beam.height);
     var abductee = {
         type: "rectangle",
         x: beam.x, y: abducteeY, width: beam.width, height: beam.width,
-        color: '#000000', display: true
+        color: '#ffffff', display: true
     };
 
     var parts = [b, abductee];
