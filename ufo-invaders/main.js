@@ -46,4 +46,4 @@ function draw() {
     }
 }
 
-var refreshInterval = setInterval(draw(), 10);
+var refreshInterval = setInterval(draw, 10);
