@@ -1,6 +1,7 @@
 import { getEarth } from '../objects/earth.js';
 import { getSky } from '../objects/sky.js';
 import { getUFO } from '../objects/ufo.js';
+import { getDefender } from '../objects/defender.js';
 import { getStats } from '../objects/stats.js';
 
 export function getGame() {
@@ -13,13 +14,17 @@ export function getGame() {
     var sky = getSky(canvas);
     var ufos = getUFOs(canvas);
     var beams = getBeams(ufos);
+    var defender = getDefender(canvas);
+    var events = {upPressed: false, downPressed: false, leftPressed: false, rightPressed: false,
+                  spacePressed:false};
 
     var game = {
         gameOver: false,
         infoCenter: infoCenter, infoCtx: infoCtx,
         canvas: canvas, ctx: ctx,
         stats: stats,
-        earth: earth, sky: sky, ufos: ufos, beams: beams
+        earth: earth, sky: sky, ufos: ufos, beams: beams, defender: defender,
+        events: events
     };
     return game;
 }
