@@ -3,8 +3,8 @@ export function getUFO(canvas) {
         type: "rectangle",
         x: 40, y: 40, width: 40, height: 5,
         speedX: 2, speedY: 2,
-        maxLeft: 5, maxRight: canvas.width - 5,
-        maxUp: 5, maxDown: canvas.height /2,
+        maxLeft: 0, maxRight: canvas.width - 40,
+        maxUp: 0, maxDown: canvas.height /2,
         color: '#ffff33',
         timer: Date.now() + 3000
     };
@@ -17,9 +17,7 @@ function randomize(ufo) {
 }
 
 export function updateUFO(ufo) {
-    console.log(Date.now());
     if (Date.now() > ufo.timer) randomize(ufo);
-
     ufo.x = ufo.x + ufo.speedX;
     ufo.y = ufo.y + ufo.speedY;
     if (ufo.x + ufo.width > ufo.maxRight)
