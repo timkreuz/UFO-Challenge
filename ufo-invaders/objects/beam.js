@@ -17,7 +17,7 @@ function getParts(beam, ufo) {
     var b = {
         type: "rectangle",
         x: beam.x, y: beam.y, width: beam.width, height: beam.height,
-        color: '#ff0000', display: true
+        color: '#37a9fb', display: true
     };
 
     var millisecondsRemaining = ufo.timer - Date.now();
