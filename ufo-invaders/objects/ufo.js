@@ -13,7 +13,7 @@ export function getUFO(canvas) {
 function randomize(ufo) {
     ufo.speedX = (Math.floor(Math.random()* 90) - 45)/10;
     ufo.speedY = (Math.floor(Math.random()* 90) - 45)/10;
-    ufo.timer = Date.now() + Math.floor(Math.random() * 1000) + 2000;
+    ufo.timer = Date.now() + Math.floor(Math.random() * 1) + 1;
 }
 
 export function updateUFO(ufo) {
