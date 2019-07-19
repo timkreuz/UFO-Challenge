@@ -6,6 +6,7 @@ export function getUFO(canvas) {
         maxLeft: 5, maxRight: canvas.width - 5,
         maxUp: 5, maxDown: canvas.height /2,
         color: '#ffff33',
+        parts: [],
         timer: Date.now() + 3000
     };
 }

@@ -19,9 +19,24 @@ function drawObjects(game) {
 }
 
 function drawObject(ctx, object) {
+    if (object.type == "rectangle") {
+        drawRectangle(ctx, object);
+    }
+    if (object.type == "complex") {
+        drawComplex(ctx, object.parts);
+    }
+}
+
+function drawRectangle(ctx, object) {
     ctx.beginPath();
     ctx.rect(object.x, object.y, object.width, object.height);
     ctx.fillStyle = object.color;
     ctx.fill();
     ctx.closePath();
+}
+
+function drawComplex(ctx, parts) {
+    for (var i = 0; i < parts.length; i++) {
+        drawObject(ctx, parts[i]);
+    }
 }
