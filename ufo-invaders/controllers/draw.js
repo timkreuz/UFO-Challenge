@@ -4,7 +4,6 @@ export function drawGame(game) {
 }
 
 function displayScore(game) {
-    console.log(game);
     game.infoCtx.clearRect(0, 0, game.infoCenter.width, game.infoCenter.height);
     game.infoCtx.fillStyle = "#ffffff";
     game.infoCtx.fillText("Score: " + game.stats.score + "          Abductions: " + game.stats.abductions +
@@ -15,7 +14,7 @@ function drawObjects(game) {
     game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
     drawObject(game.ctx, game.earth);
     drawObject(game.ctx, game.sky);
-    drawObject(game.ctx, game.ufo);
+    drawObject(game.ctx, game.ufos);
 }
 
 function drawObject(ctx, object) {
@@ -23,7 +22,7 @@ function drawObject(ctx, object) {
         drawRectangle(ctx, object);
     }
     if (object.type == "complex") {
-        drawComplex(ctx, object.parts);
+        drawComplex(ctx, object.parts)
     }
 }
 
