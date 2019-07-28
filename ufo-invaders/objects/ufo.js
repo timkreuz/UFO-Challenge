@@ -14,6 +14,7 @@ function getUFO(canvas, index) {
     var height = 5;
     var ufo = {
         type: "complex",
+        mode: "flying",
         x: 40, y: 40, width: width, height: height,
         speedX: 2, speedY: 2,
         maxLeft: 0, maxRight: canvas.width - width,
@@ -76,9 +77,20 @@ function randomize(ufo) {
 }
 
 export function updateUFO(ufo, stunners) {
+    if (ufo.mode == "flying") {
+        updateFlyingUFO(ufo, stunners);
+    } else if (ufo.mode == "leaving") {
+        console.log(ufo.mode);
+        updateLeavingUFO(ufo);
+    }
+}
+
+function updateFlyingUFO(ufo, stunners) {
+
     if (ufo.display == null || ufo.display) {
         if (isCollision(ufo, stunners)) {
-            ufo.display = false;
+            ufo.mode = "leaving";
+            ufo.speedY = -11.0;
         } else {
 
             if (Date.now() > ufo.timer) randomize(ufo);
@@ -98,6 +110,18 @@ export function updateUFO(ufo, stunners) {
             }
             ufo.parts = getParts(ufo);
         }
+    }
+}
+
+function updateLeavingUFO(ufo) {
+
+    ufo.x = ufo.x + ufo.speedX;
+    ufo.y = ufo.y + ufo.speedY;
+    ufo.parts = getParts(ufo);
+
+    if (ufo.y < -20) {
+        ufo.mode = "gone";
+        ufo.display = "false";
     }
 }
 
