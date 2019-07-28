@@ -2,6 +2,7 @@ import {getEarth} from '../objects/earth.js';
 import {getSky} from '../objects/sky.js'; 
 import {getUFOs} from '../objects/ufo.js'; 
 import {getDefender } from '../objects/defender.js';
+import {getStunners } from '../objects/stunners.js';
 import {getStats} from '../objects/stats.js'; 
 
 export function getGame() {
@@ -13,7 +14,8 @@ export function getGame() {
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
     var defender = getDefender(canvas);
-    var ufos = getUFOs(canvas,199);
+    var ufos = getUFOs(canvas,99);
+    var stunners = getStunners(10);
     var events = {upPressed: false, downPressed: false, leftPressed: false, rightPressed: false,
                   spacePressed:false};
 
@@ -21,7 +23,7 @@ export function getGame() {
                 infoCenter: infoCenter, infoCtx: infoCtx,
                 canvas: canvas, ctx: ctx,
                 stats: stats,
-                earth: earth, sky: sky, defender: defender, ufos: ufos, 
+                earth: earth, sky: sky, defender: defender, ufos: ufos, stunners: stunners,
                 events: events};
     return game;
 }

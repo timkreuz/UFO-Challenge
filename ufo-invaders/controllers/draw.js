@@ -16,14 +16,17 @@ function drawObjects(game) {
     drawObject(game.ctx, game.sky);
     drawObject(game.ctx, game.defender);
     drawObject(game.ctx, game.ufos);
+    drawObject(game.ctx, game.stunners);
 }
 
 function drawObject(ctx, object) {
-    if (object.type == "rectangle") {
-        drawRectangle(ctx, object);
-    }
-    if (object.type == "complex") {
-        drawComplex(ctx, object.parts)
+    if (object.display == null ||  object.display) {
+        if (object.type == "rectangle") {
+            drawRectangle(ctx, object);
+        }
+        if (object.type == "complex") {
+            drawComplex(ctx, object.parts)
+        }
     }
 }
 

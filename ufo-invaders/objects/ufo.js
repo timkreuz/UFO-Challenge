@@ -1,6 +1,6 @@
 export function getUFOs(canvas, numberOfUFOs) {
 
-    var ufos = {type: "complex", parts: []};
+    var ufos = { type: "complex", parts: [] };
 
     for (var i = 0; i < numberOfUFOs; i++) {
         var ufo = getUFO(canvas, i);
@@ -21,7 +21,7 @@ function getUFO(canvas, index) {
         color: getUFOColor(index),
         parts: [],
         timer: Date.now() + 3000,
-        lightInfo: {number: 3, maxOffset: width / 3, offset: 0, speed: 1.5, color: getRandomColor()}
+        lightInfo: { number: 3, maxOffset: width / 3, offset: 0, speed: 1.5, color: getRandomColor() }
     };
 
     ufo.parts = getParts(ufo);
@@ -30,10 +30,10 @@ function getUFO(canvas, index) {
 }
 
 function getParts(ufo) {
-                        
+
     var top = {
         type: "rectangle",
-        x: ufo.x + (ufo.width / 4) , y: ufo.y, width: ufo.width / 2, height: ufo.height / 2,
+        x: ufo.x + (ufo.width / 4), y: ufo.y, width: ufo.width / 2, height: ufo.height / 2,
         color: ufo.color
     };
 
@@ -57,39 +57,48 @@ function getLights(ufo) {
         info.offset = 0;
     }
 
-    var lights = {type: "complex", parts: []};
+    var lights = { type: "complex", parts: [] };
 
     for (var i = 0; i < info.number; i++) {
-        var light = {type: "rectangle", x: ufo.x + (i * info.maxOffset) + info.offset, 
-                    y: ufo.y + ufo.height /2, width: 3, height: 2, color: info.color};
+        var light = {
+            type: "rectangle", x: ufo.x + (i * info.maxOffset) + info.offset,
+            y: ufo.y + ufo.height / 2, width: 3, height: 2, color: info.color
+        };
         lights.parts.push(light);
-    } 
+    }
     return lights;
 }
 
 function randomize(ufo) {
-    ufo.speedX = (Math.floor(Math.random() * 40) - 20)/10;
-    ufo.speedY = (Math.floor(Math.random() * 40) - 20)/10;
+    ufo.speedX = (Math.floor(Math.random() * 40) - 20) / 10;
+    ufo.speedY = (Math.floor(Math.random() * 40) - 20) / 10;
     ufo.timer = Date.now() + Math.floor(Math.random() * 1000) + 2000;
 }
 
-export function updateUFO(ufo) {
-    if (Date.now() > ufo.timer) randomize(ufo);
+export function updateUFO(ufo, stunners) {
+    if (ufo.display == null || ufo.display) {
+        if (isCollision(ufo, stunners)) {
+            ufo.display = false;
+        } else {
 
-    ufo.x = ufo.x + ufo.speedX;
-    if ((ufo.x <= ufo.maxLeft) && (ufo.speedX < 0)) {
-        ufo.speedX = ufo.speedX * -1;
-    } else if ((ufo.x >= ufo.maxRight) && (ufo.speedX > 0)) {
-        ufo.speedX = ufo.speedX * -1;
-    }
+            if (Date.now() > ufo.timer) randomize(ufo);
 
-    ufo.y = ufo.y + ufo.speedY;
-    if ((ufo.y <= ufo.maxUp) && (ufo.speedY < 0)) {
-        ufo.speedY = ufo.speedY * -1;
-    } else if ((ufo.y >= ufo.maxDown) && (ufo.speedY > 0)) {
-        ufo.speedY = ufo.speedY * -1;
+            ufo.x = ufo.x + ufo.speedX;
+            if ((ufo.x <= ufo.maxLeft) && (ufo.speedX < 0)) {
+                ufo.speedX = ufo.speedX * -1;
+            } else if ((ufo.x >= ufo.maxRight) && (ufo.speedX > 0)) {
+                ufo.speedX = ufo.speedX * -1;
+            }
+
+            ufo.y = ufo.y + ufo.speedY;
+            if ((ufo.y <= ufo.maxUp) && (ufo.speedY < 0)) {
+                ufo.speedY = ufo.speedY * -1;
+            } else if ((ufo.y >= ufo.maxDown) && (ufo.speedY > 0)) {
+                ufo.speedY = ufo.speedY * -1;
+            }
+            ufo.parts = getParts(ufo);
+        }
     }
-    ufo.parts = getParts(ufo);
 }
 
 
@@ -115,4 +124,34 @@ function getUFOColor(index) {
     var s = 100;
     var l = 50;
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+}
+
+function isCollision(ufo, stunners) {
+    var hit = false;
+
+    for (var i = 0; i < stunners.length; i++) {
+        var stunner = stunners[i];
+        if (stunner.display) {
+            var stunner = stunners[i];
+            var stunnerLeft = stunner.x;
+            var stunnerRight = stunner.x + stunner.width;
+            var stunnerTop = stunner.y;
+            var stunnerBottom = stunner.y + stunner.height;
+            var ufoLeft = ufo.x;
+            var ufoRight = ufo.x + ufo.width;
+            var ufoTop = ufo.y;
+            var ufoBottom = ufo.y + ufo.height;
+            var xOverlap = (stunnerLeft >= ufoLeft && stunnerLeft <= ufoRight) ||
+                (stunnerRight >= ufoLeft && stunnerRight <= ufoRight);
+            var yOverlap = (stunnerTop <= ufoBottom && stunnerTop >= ufoTop) ||
+                (stunnerBottom <= ufoBottom && stunnerBottom >= ufoTop);
+            if (xOverlap && yOverlap) {
+                hit = true;
+                stunner.display = false;
+                break;
+            }
+        }
+    }
+
+    return hit;
 }
