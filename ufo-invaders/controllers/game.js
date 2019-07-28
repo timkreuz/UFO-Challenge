@@ -1,6 +1,7 @@
 import {getEarth} from '../objects/earth.js';
 import {getSky} from '../objects/sky.js'; 
 import {getUFOs} from '../objects/ufo.js'; 
+import {getDefender } from '../objects/defender.js';
 import {getStats} from '../objects/stats.js'; 
 
 export function getGame() {
@@ -11,12 +12,16 @@ export function getGame() {
     var infoCtx = infoCenter.getContext("2d");
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
+    var defender = getDefender(canvas);
     var ufos = getUFOs(canvas,199);
+    var events = {upPressed: false, downPressed: false, leftPressed: false, rightPressed: false,
+                  spacePressed:false};
 
     var game = {gameOver: false,
                 infoCenter: infoCenter, infoCtx: infoCtx,
                 canvas: canvas, ctx: ctx,
                 stats: stats,
-                earth: earth, sky: sky, ufos: ufos};
+                earth: earth, sky: sky, defender: defender, ufos: ufos, 
+                events: events};
     return game;
 }
