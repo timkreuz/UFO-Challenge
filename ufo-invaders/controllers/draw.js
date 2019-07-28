@@ -11,7 +11,7 @@ function displayScore(game) {
 }
 
 function drawObjects(game) {
-    game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
+    // game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
     drawObject(game.ctx, game.earth);
     drawObject(game.ctx, game.sky);
     drawObject(game.ctx, game.ufos);

@@ -11,7 +11,7 @@ export function getGame() {
     var infoCtx = infoCenter.getContext("2d");
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
-    var ufos = getUFOs(canvas,55);
+    var ufos = getUFOs(canvas,199);
 
     var game = {gameOver: false,
                 infoCenter: infoCenter, infoCtx: infoCtx,
