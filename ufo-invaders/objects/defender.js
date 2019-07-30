@@ -17,16 +17,16 @@ function getParts(defender) {
     
     var top = {
         type: "rectangle",
-        x: defender.x, y: defender.y, 
-        width: defender.width, height: defender.height / 3,
+        x: defender.x + (defender.width / 2) - (defender.width/6), y: defender.y, 
+        width: defender.width / 3, height: defender.height / 3,
         display: true,
-        color: '#3333ff'
+        color: '#ff0066'
     };
     
     var middle = {
         type: "rectangle",
-        x: defender.x, y: top.y + top.height, 
-        width: defender.width, height: defender.height / 3,
+        x: defender.x + (defender.width/4), y: top.y + top.height, 
+        width: defender.width / 2, height: defender.height / 3,
         display: true,
         color: '#ffff66'
     };

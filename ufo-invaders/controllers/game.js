@@ -14,7 +14,7 @@ export function getGame() {
     var earth = getEarth(canvas);
     var sky = getSky(canvas);
     var defender = getDefender(canvas);
-    var ufos = getUFOs(canvas,99);
+    var ufos = getUFOs(canvas,100);
     var stunners = getStunners(10);
     var events = {upPressed: false, downPressed: false, leftPressed: false, rightPressed: false,
                   spacePressed:false};

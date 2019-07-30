@@ -10,8 +10,8 @@ export function getUFOs(canvas, numberOfUFOs) {
 }
 
 function getUFO(canvas, index) {
-    var width = 20;
-    var height = 5;
+    var width = 16;
+    var height = 4;
     var ufo = {
         type: "complex",
         mode: "flying",
