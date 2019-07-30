@@ -61,6 +61,10 @@ export function updateDefender(game) {
             }
         }
 
+        if (game.events.upPressed) {
+            defender.y = defender.y - defender.speedX;
+        }
+
         defender.parts = getParts(defender);
 
 }

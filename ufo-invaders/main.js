@@ -12,8 +12,8 @@ function keyDownHandler(e) {
     keyDown(game, e);
 }
 
-function keyUpHandler(e) {
-    keyUp(game, e);
+function keyUpHandler(event) {
+    keyUp(game, event);
 }
 
 function runGame() {
