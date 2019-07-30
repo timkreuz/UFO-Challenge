@@ -48,14 +48,14 @@ export function updateDefender(game) {
         var defender = game.defender;
 
         if (game.events.leftPressed) {
-            defender.x = defender.x - defender.speedX;
+            defender.x = defender.x + defender.speedX;
             if (defender.x < defender.maxLeft) {
                 defender.x = defender.maxLeft;
             }
         }
 
         if (game.events.rightPressed) {
-            defender.x = defender.x + defender.speedX;
+            defender.x = defender.x - defender.speedX;
             if (defender.x  > defender.maxRight) {
                 defender.x = defender.maxRight;
             }
