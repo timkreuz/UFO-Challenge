@@ -11,7 +11,7 @@ export function getStunners(maxStunners) {
 }
 
 function getStunner() {
-    return {type: "rectangle", display: false, speed: 2, x: 0, y: 0, width: 4, height: 4, color: "#0000ff"}
+    return {type: "rectangle", display: false, speed: 2, x: 0, y: 0, width: 4, height: 4, color: "#a366ff"}
 }
 
 export function updateStunners(game) {

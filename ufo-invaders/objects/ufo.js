@@ -90,7 +90,7 @@ function updateFlyingUFO(ufo, stunners) {
     if (ufo.display == null || ufo.display) {
         if (isCollision(ufo, stunners)) {
             ufo.mode = "leaving";
-            ufo.speedY = -11.0;
+            ufo.speedY = -8.0;
         } else {
 
             if (Date.now() > ufo.timer) randomize(ufo);
