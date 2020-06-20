@@ -17,7 +17,6 @@ function displayScore(stats) {
 }
 
 function drawEarth(earth) {
-    console.log(earth);
     ctx.beginPath();
     ctx.rect(earth.x, earth.y, earth.width, earth.height);
     ctx.fillStyle = earth.color;
