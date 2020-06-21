@@ -2,14 +2,18 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>UFO Attack</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UFO Invaders</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="./css/theme01.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <style>
         canvas {
             background: rgba(0, 0, 10, 0.897);
             display: block;
@@ -19,9 +23,41 @@
 </head>
 
 <body>
+
+
+    <div class="container-fluid  sticky-top">
+
+        <div class="row bg-primary" style="height:5px"></div>
+        <div class="row bg-success" style="height:2px"></div>
+        <div class="row bg-primary" style="height:2px"></div>
+        <div class="row bg-secondary" style="height:2px"></div>
+        <div class="row bg-primary" style="height:2px"></div>
+        <div class="row bg-success" style="height:2px"></div>
+
+        <div class="row bg-primary" style="height: 60px">
+            <div class="col-2 text-secondary pt-4">
+            </div>
+            <div class="col-8 text-secondary  text-center pt-2 pb-2">
+                <h2 class="txt-shadow">UFO Invaders - 2020 Edition</h2>
+            </div>
+            <div class="col-2 text-white pt-4">
+            </div>
+        </div>
+        <div class="row bg-success" style="height:2px"></div>
+        <div class="row bg-primary" style="height:2px"></div>
+        <div class="row bg-secondary" style="height:2px"></div>
+        <div class="row bg-primary" style="height:2px"></div>
+        <div class="row bg-success" style="height:2px"></div>
+    </div>
+
+
+
     </br>
-    <canvas id="infoCenter" width="1000" height="20"></canvas>
-    <canvas id="myCanvas" width="1000" height="520"></canvas>
+    <div>
+        <canvas class="border border-secondary pb-3" id="infoCenter" width="1000" height="20"></canvas>
+        <canvas class="border border-secondary" id="myCanvas" width="1000" height="520"></canvas>
+    </div>
+
 
     <script type="module" src="main.js"></script>
 </body>
