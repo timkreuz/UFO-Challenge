@@ -32,6 +32,14 @@ function drawSky(sky) {
     ctx.closePath();
 }
 
+function drawUfo(sky) {
+    ctx.beginPath();
+    ctx.rect(sky.x, sky.y, sky.width, sky.height);
+    ctx.fillStyle = sky.color;
+    ctx.fill();
+    ctx.closePath();
+}
+
 function draw() {
     if (stats.endOfGame) {
         clearInterval(refreshInterval);
@@ -42,6 +50,7 @@ function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawEarth(earth);
         drawSky(sky);
+        drawUfo(sky);
     }
 }
 
