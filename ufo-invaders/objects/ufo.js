@@ -80,7 +80,6 @@ export function updateUFO(ufo, stunners) {
     if (ufo.mode == "flying") {
         updateFlyingUFO(ufo, stunners);
     } else if (ufo.mode == "leaving") {
-        console.log(ufo.mode);
         updateLeavingUFO(ufo);
     }
 }
@@ -157,19 +156,7 @@ function isCollision(ufo, stunners) {
         var stunner = stunners[i];
         if (stunner.display) {
             var stunner = stunners[i];
-            var stunnerLeft = stunner.x;
-            var stunnerRight = stunner.x + stunner.width;
-            var stunnerTop = stunner.y;
-            var stunnerBottom = stunner.y + stunner.height;
-            var ufoLeft = ufo.x;
-            var ufoRight = ufo.x + ufo.width;
-            var ufoTop = ufo.y;
-            var ufoBottom = ufo.y + ufo.height;
-            var xOverlap = (stunnerLeft >= ufoLeft && stunnerLeft <= ufoRight) ||
-                (stunnerRight >= ufoLeft && stunnerRight <= ufoRight);
-            var yOverlap = (stunnerTop <= ufoBottom && stunnerTop >= ufoTop) ||
-                (stunnerBottom <= ufoBottom && stunnerBottom >= ufoTop);
-            if (xOverlap && yOverlap) {
+            if (objectsOverlap(stunner, ufo)) {
                 hit = true;
                 stunner.display = false;
                 break;
@@ -178,4 +165,24 @@ function isCollision(ufo, stunners) {
     }
 
     return hit;
+}
+
+function objectsOverlap(o1, o2) {
+
+    var o1Left = o1.x;
+    var o1Right = o1.x + o1.width;
+    var o1Top = o1.y;
+    var o1Bottom = o1.y + o1.height;
+
+    var o2Left = o2.x;
+    var o2Right = o2.x + o2.width;
+    var o2Top = o2.y;
+    var o2Bottom = o2.y + o2.height;
+
+    var xOverlap = (o1Left >= o2Left && o1Left <= o2Right) ||
+        (o1Right >= o2Left && o1Right <= o2Right);
+    var yOverlap = (o1Top <= o2Bottom && o1Top >= o2Top) ||
+        (o1Bottom <= o2Bottom && o1Bottom >= o2Top);
+
+    return xOverlap && yOverlap;
 }
