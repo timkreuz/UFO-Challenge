@@ -1,4 +1,19 @@
-export function getUFO(canvas) {
+
+export function getUFOs(canvas, numberOfUFOs) {
+
+    var ufos = []
+
+    for (var i = 0; i < numberOfUFOs; i++) {
+        var ufo = getUFO(canvas)
+        ufos.push(ufo)
+    }
+
+    return ufos
+}
+
+
+
+function getUFO(canvas) {
     return {
         type: "rectangle",
         x: 40, y: 40, width: 40, height: 5,

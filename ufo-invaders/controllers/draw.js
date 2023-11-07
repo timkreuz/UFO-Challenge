@@ -15,7 +15,9 @@ function drawObjects(game) {
     game.ctx.clearRect(0, 0, game.canvas.width, game.canvas.height);
     drawObject(game.ctx, game.earth);
     drawObject(game.ctx, game.sky);
-    drawObject(game.ctx, game.ufo);
+    for (var i = 0; i < game.ufos.length; i++) {
+        drawObject(game.ctx, game.ufos[i]);
+    }
 }
 
 function drawObject(ctx, object) {
